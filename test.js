@@ -1,20 +1,16 @@
-const fibonacci = (number) => {
-  if (number === 0) {
-    return 0;
-  } else if (number === 1) {
-    return 1;
-  } else {
-    return fibonacci(number - 1) + fibonacci(number - 2);
+function sumPairs(ints, s) {
+  let numbers = [];
+  let list = [];
+  let limit = ints.length;
+  for (let i = 0; i < ints.length; i++) {
+    let needed = s - ints[i];
+    if (list.indexOf(needed) !== -1) {
+      return [needed, ints[i]];
+    }
+    list.push(ints[i]);
   }
-};
 
-const fibArry = (n) => {
-  const values = [];
-  for (let i = 0; i < n; i++) {
-    const value = fibonacci(i);
-    values.push(value);
-  }
-  return values;
-};
+  return undefined;
+}
 
-console.log(fibArry(10));
+console.log(sumPairs([4, -2, 3, 4, 3, 12], 8));
