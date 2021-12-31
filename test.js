@@ -1,16 +1,19 @@
-function sumPairs(ints, s) {
-  let numbers = [];
-  let list = [];
-  let limit = ints.length;
-  for (let i = 0; i < ints.length; i++) {
-    let needed = s - ints[i];
-    if (list.indexOf(needed) !== -1) {
-      return [needed, ints[i]];
+const func = (str) => {
+  let maxLetter = str[0];
+  let maxCount = 1;
+  for (let i = 0; i < str.length; i++) {
+    let count = 0;
+    for (let j = 0; j < str.length; j++) {
+      str[i] === str[j] && count++;
     }
-    list.push(ints[i]);
+    if (count > maxCount) {
+      (maxCount = count), (maxLetter = str[i]);
+    } else if (count === maxCount) {
+      maxLetter > str[i] ? (maxLetter = str[i]) : (maxLetter = maxLetter);
+    }
+    count = 0;
   }
+  return [maxLetter, maxCount];
+};
 
-  return undefined;
-}
-
-console.log(sumPairs([4, -2, 3, 4, 3, 12], 8));
+console.log(func("bbbcdauhyabaya"));
